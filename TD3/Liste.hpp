@@ -5,6 +5,8 @@
 #include "gsl/span"
 #include "cppitertools/range.hpp"
 
+using namespace std;
+
 template <typename T>
 class Liste
 {
@@ -20,7 +22,7 @@ public:
 	unsigned getCapacite() const  { return capacite_; }
 
 	//TODO: Méthode pour changer la capacité de la liste
-	void augmenterCapacite()	  { capacite_ = std::max(capacite_ * 2,1); }
+	void augmenterCapacite(); 
 	//TODO: Méthode pour trouver une élément selon un critère (lambda).
 	
 private:
@@ -29,7 +31,6 @@ private:
 	//TODO: Attribut contenant les éléments de la liste.
 	unique_ptr< shared_ptr<T>[] > elements_;
 
-	void creerListeAgrandie();
 };
 
 template <typename T>
@@ -37,16 +38,16 @@ void Liste<T>::ajoutListe(shared_ptr<T> ptr)
 {
 	if (nElements_ == capacite_) {
 		augmenterCapacite();
-		creerListeAgrandie();
 	}
 	elements_[nElements_] = move_shared(ptr);
 	++nElements_;
 }
 
 template <typename T>
-void Liste<T>::creerListeAgrandie()
+void Liste<T>::augmenterCapacite()
 {
-	auto ptr = make_unique<shared_ptr<T>[]>(capacite_);
+	capacite_ = std::max(capacite_ * 2, 1);
+	auto ptr = make_unique<shared_ptr<T>[capacite_]>;
 	for (auto i : range(size())) {
 		ptr[i] = move(elements_[i]);
 	}
