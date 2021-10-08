@@ -12,7 +12,11 @@ class Liste
 {
 public:
 	//TODO: Constructeurs et surcharges d'opérateurs
+	Liste()=default;
 
+	shared_ptr<T>& operator[] (int index) { return elements_[index]; }
+	const shared_ptr<T>& operator[] (int index) const { return elements_[index]; }
+	
 	//TODO: Méthode pour ajouter un élément à la liste
 	void ajoutListe(shared_ptr<T>);
 
@@ -24,7 +28,8 @@ public:
 	//TODO: Méthode pour changer la capacité de la liste
 	void augmenterCapacite(); 
 	//TODO: Méthode pour trouver une élément selon un critère (lambda).
-	
+
+
 private:
 	unsigned int nElements_;
 	unsigned int capacite_;
@@ -53,3 +58,4 @@ void Liste<T>::augmenterCapacite()
 	}
 	elements_ = move_unique(ptr);
 }
+

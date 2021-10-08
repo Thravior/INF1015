@@ -5,6 +5,7 @@ class Concepteur
 {
 public:
 	//TODO: Un constructeur par défaut et un constructeur paramétré.
+	Concepteur() = default;
 
 	const std::string& getNom() const     { return nom_; }
 	void setNom(const std::string& nom)   { nom_ = nom; }

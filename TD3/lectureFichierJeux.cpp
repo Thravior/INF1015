@@ -31,7 +31,8 @@ string lireString(istream& fichier)
 shared_ptr<Concepteur> chercherConcepteur(Liste<Jeu>& listeJeux, string nom)
 {
 	//TODO: Compléter la fonction (équivalent de trouverDesigner du TD2).
-	return {};
+
+	return nullptr;
 }
 
 shared_ptr<Concepteur> lireConcepteur(Liste<Jeu>& lj, istream& f)
@@ -42,7 +43,7 @@ shared_ptr<Concepteur> lireConcepteur(Liste<Jeu>& lj, istream& f)
 
 	//TODO: Compléter la fonction (équivalent de lireDesigner du TD2).
 	cout << "C: " << nom << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
-	return {};
+	return nullptr;
 }
 
 shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
@@ -56,7 +57,7 @@ shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
 		lireConcepteur(lj, f);
 
 	cout << "J: " << titre << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
-	return {};
+	return nullptr;
 }
 
 Liste<Jeu> creerListeJeux(const string& nomFichier)
@@ -69,5 +70,5 @@ Liste<Jeu> creerListeJeux(const string& nomFichier)
 	for ([[maybe_unused]] int i : iter::range(nElements))
 		lireJeu(f, listeJeux);
 
-	return {};
+	return listeJeux;
 }
