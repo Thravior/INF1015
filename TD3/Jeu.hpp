@@ -13,6 +13,17 @@ class Jeu
 public:
 	//TODO: un constructeur par défaut et un constructeur paramétré.
 	Jeu() = default;
+	Jeu(const string& titre, const int anneeSortie, const string& developpeur,int nConcepteurs) {
+		titre_ = titre;
+		anneeSortie_ = anneeSortie;
+		developpeur_ = developpeur;
+		concepteurs_ = make_unique<Liste<Concepteur>>(nConcepteurs);
+	}
+	Jeu(const Jeu& jeu) {
+		titre_ = jeu.getTitre();
+		anneeSortie_ = jeu.getAnneeSortie();
+		developpeur_ = jeu.getDeveloppeur();
+	}
 
 
 	const std::string& getTitre() const { return titre_; }
@@ -25,6 +36,7 @@ public:
 	void setDeveloppeur(const std::string& developpeur) { developpeur_ = developpeur; }
 
 	//TODO: Pouvoir accéder à la liste de concepteurs.
+	Liste<Concepteur>* getConcepteurs() { return concepteurs_.get(); }
 	//TODO: Votre méthode pour trouver un concepteur selon un critère donné par une lambda, en utilisant la méthode de Liste.
 
 
@@ -36,6 +48,3 @@ private:
 	unique_ptr<Liste<Concepteur>> concepteurs_;
 
 };
-
-
-

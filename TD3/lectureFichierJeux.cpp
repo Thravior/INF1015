@@ -53,11 +53,13 @@ shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
 	string developpeur    = lireString(f);
 	unsigned nConcepteurs = lireUint8(f);
 	//TODO: Compléter la fonction (équivalent de lireJeu du TD2).
+	auto ptrJeu = make_shared<Jeu>(titre, anneeSortie, developpeur, nConcepteurs);
+
 	for (unsigned int i = 0; i < nConcepteurs; i++)
-		lireConcepteur(lj, f);
+		ptrJeu->getConcepteurs()->ajoutListe( lireConcepteur(lj, f));
 
 	cout << "J: " << titre << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
-	return nullptr;
+	return ptrJeu;
 }
 
 Liste<Jeu> creerListeJeux(const string& nomFichier)
@@ -68,7 +70,7 @@ Liste<Jeu> creerListeJeux(const string& nomFichier)
 	//TODO: Compléter la fonction.
 	Liste<Jeu> listeJeux;
 	for ([[maybe_unused]] int i : iter::range(nElements))
-		lireJeu(f, listeJeux);
+		listeJeux + lireJeu(f, listeJeux);
 
 	return listeJeux;
 }

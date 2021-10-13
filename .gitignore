@@ -16,3 +16,6 @@ TD3/x64/Debug/ProjetTest.vcxproj.FileListAbsolute.txt
 *.vcxproj
 TD3/ProjetTest.vcxproj
 TD3/.vs/ProjetTD3/v16/Browse.VC.db
+*.vcxproj
+*.filters
+*.filters

@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="bibliotheque_cours\bibliotheque_cours.cpp" />
     <ClCompile Include="bibliotheque_cours\verification_allocation.cpp" />
+    <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="lectureFichierJeux.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

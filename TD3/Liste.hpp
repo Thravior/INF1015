@@ -8,15 +8,22 @@
 using namespace std;
 
 template <typename T>
-class Liste
+class Liste	
 {
 public:
 	//TODO: Constructeurs et surcharges d'opérateurs
 	Liste()=default;
+	Liste(int taille) {
+		nElements_ = 0;
+		capacite_ = taille;
+		elements_ = make_unique<shared_ptr<T>[]>(capacite_);
+	}
 
 	shared_ptr<T>& operator[] (int index) { return elements_[index]; }
 	const shared_ptr<T>& operator[] (int index) const { return elements_[index]; }
 	
+	void operator+ (shared_ptr<T> element) { ajoutListe(element); }
+
 	//TODO: Méthode pour ajouter un élément à la liste
 	void ajoutListe(shared_ptr<T>);
 
@@ -44,18 +51,20 @@ void Liste<T>::ajoutListe(shared_ptr<T> ptr)
 	if (nElements_ == capacite_) {
 		augmenterCapacite();
 	}
-	elements_[nElements_] = move_shared(ptr);
+	elements_[nElements_] = move(ptr);
 	++nElements_;
 }
 
 template <typename T>
 void Liste<T>::augmenterCapacite()
 {
-	capacite_ = std::max(capacite_ * 2, 1);
-	auto ptr = make_unique<shared_ptr<T>[capacite_]>;
-	for (auto i : range(size())) {
+	capacite_ = max(capacite_ * 2, unsigned(1));
+	
+	auto ptr = make_unique<shared_ptr<T>[]>(capacite_);
+
+	for (auto i : iter::range(nElements_) ) {
 		ptr[i] = move(elements_[i]);
 	}
-	elements_ = move_unique(ptr);
+	elements_ = move(ptr);
 }
 
