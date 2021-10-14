@@ -28,7 +28,7 @@ string lireString(istream& fichier)
 }
 #pragma endregion
 
-shared_ptr<Concepteur> chercherConcepteur(Liste<Jeu>& listeJeux, string nom)
+std::shared_ptr<Concepteur> chercherConcepteur(Liste<Jeu>& listeJeux, std::string nom)
 {
 	//TODO: Compléter la fonction (équivalent de trouverDesigner du TD2).
 	for (auto i : iter::range(listeJeux.size())) {
@@ -48,9 +48,12 @@ shared_ptr<Concepteur> lireConcepteur(Liste<Jeu>& lj, istream& f)
 	string pays             = lireString(f);
 
 	//TODO: Compléter la fonction (équivalent de lireDesigner du TD2).
-
+	shared_ptr<Concepteur> ptrC = chercherConcepteur(lj, nom);
+	if (ptrC == nullptr) {
+		ptrC = make_shared<Concepteur>(nom, anneeNaissance, pays);
+	}
 	cout << "C: " << nom << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
-	return nullptr;
+	return ptrC;
 }
 
 shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
