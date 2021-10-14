@@ -31,7 +31,13 @@ string lireString(istream& fichier)
 shared_ptr<Concepteur> chercherConcepteur(Liste<Jeu>& listeJeux, string nom)
 {
 	//TODO: Compléter la fonction (équivalent de trouverDesigner du TD2).
-
+	for (auto i : iter::range(listeJeux.size())) {
+		for (auto j : iter::range(listeJeux[i]->getConcepteurs()->size())) {
+			if (listeJeux[i]->getConcepteurs()->operator[](j)->getNom() == nom) {
+				return listeJeux[i]->getConcepteurs()->operator[](j);
+			}
+		}
+	}
 	return nullptr;
 }
 
@@ -42,6 +48,7 @@ shared_ptr<Concepteur> lireConcepteur(Liste<Jeu>& lj, istream& f)
 	string pays             = lireString(f);
 
 	//TODO: Compléter la fonction (équivalent de lireDesigner du TD2).
+
 	cout << "C: " << nom << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
 	return nullptr;
 }
