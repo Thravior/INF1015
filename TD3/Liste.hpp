@@ -12,7 +12,12 @@ class Liste
 {
 public:
 	//TODO: Constructeurs et surcharges d'opérateurs
-	Liste()=default;
+	Liste() {
+		nElements_ = 0;
+		capacite_ = 0;
+		elements_ = nullptr;
+	}
+
 	Liste(int taille) {
 		nElements_ = 0;
 		capacite_ = taille;
