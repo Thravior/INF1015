@@ -13,7 +13,7 @@ class Jeu
 public:
 	//TODO: un constructeur par défaut et un constructeur paramétré.
 	Jeu() = default;
-	Jeu(const string& titre, const int anneeSortie, const string& developpeur,int nConcepteurs) {
+	Jeu(const string& titre, const int anneeSortie, const string& developpeur, int nConcepteurs) {
 		titre_ = titre;
 		anneeSortie_ = anneeSortie;
 		developpeur_ = developpeur;
@@ -37,6 +37,7 @@ public:
 
 	//TODO: Pouvoir accéder à la liste de concepteurs.
 	Liste<Concepteur>* getConcepteurs() { return concepteurs_.get(); }
+
 	//TODO: Votre méthode pour trouver un concepteur selon un critère donné par une lambda, en utilisant la méthode de Liste.
 
 

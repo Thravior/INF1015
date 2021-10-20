@@ -10,6 +10,27 @@ using namespace std;
 
 //TODO: Vos surcharges d'opérateur <<
 
+ostream& operator<< (ostream& os, const Liste<Concepteur>& lc) 
+{
+	
+	for (auto i : iter::range(lc.size())) {
+		os << "\t" <<lc[i]->getNom() << ", " << lc[i]->getAnneeNaissance() << ", " << lc[i]->getPays() << endl;
+	}
+	return os;
+}
+
+ostream& operator<< (ostream& os, const Liste<Jeu>& lj)
+{
+	for (auto i : iter::range(lj.size())) {
+		os << lj[i]->getTitre() << endl << lj[i].get()->getAnneeSortie()  << endl
+		<< lj[i]->getDeveloppeur() << endl;
+		os << *lj[i]->getConcepteurs() << endl;
+		
+		
+	}
+	return os;
+}
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
 	#pragma region "Bibliothèque du cours"
@@ -24,11 +45,21 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 		"══════════════════════════════════════════════════════════════════════════"
 		"\033[0m\n";
 
+	
 	//TODO: Les l'affichage et l'écriture dans le fichier devraient fonctionner.
 	//cout << ligneSeparation << lj;
 	//ofstream("sortie.txt") << lj;
 
 	//TODO: Compléter le main avec les tests demandés.
+	cout << "Nb de jeux : " << lj.size() << endl; // Devrait avoir 17 jeux
+	cout << "Capacite : " << lj.getCapacite() << endl; // Devrait avoir une capacite de 32
+	cout << "Titre du jeu a l'indice 2 : " << lj[2]->getTitre() << endl; // Devrait avoir "Secret of Mana"
+	cout << "Nom du concepteur du jeu a l'indice 2 : " << lj[2]->getConcepteurs()->operator[](1)->getNom() << endl; // Devrait avoir "Hiromichi Tanaka"
+
+
+	cout << ligneSeparation << lj;
+	
+	// 
 	//TODO: S'assurer qu'aucune ligne de code est non couverte.
 	//NOTE: Il n'est pas nécessaire de couvrir les getters/setters simples fournis; il faut tester si vous en ajoutez ou les modifiez.
 	//NOTE: Pour Liste, qui est générique, on demande de couvrir uniquement pour Liste<Jeu>, pas pour tous les types.

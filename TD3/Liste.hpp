@@ -39,8 +39,10 @@ public:
 
 	//TODO: Méthode pour changer la capacité de la liste
 	void augmenterCapacite(); 
-	//TODO: Méthode pour trouver une élément selon un critère (lambda).
 
+	//TODO: Méthode pour trouver une élément selon un critère (lambda).
+	
+	//void trouverElement(Liste<T> liste, const function<void(T&)>& critere);
 
 private:
 	unsigned int nElements_;
@@ -72,4 +74,3 @@ void Liste<T>::augmenterCapacite()
 	}
 	elements_ = move(ptr);
 }
-
