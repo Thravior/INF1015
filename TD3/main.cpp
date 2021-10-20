@@ -48,7 +48,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	
 	//TODO: Les l'affichage et l'écriture dans le fichier devraient fonctionner.
 	//cout << ligneSeparation << lj;
-	//ofstream("sortie.txt") << lj;
+	ofstream("sortie.txt") << lj;
 
 	//TODO: Compléter le main avec les tests demandés.
 	cout << "Nb de jeux : " << lj.size() << endl; // Devrait avoir 17 jeux

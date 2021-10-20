@@ -19,12 +19,16 @@ public:
 		developpeur_ = developpeur;
 		concepteurs_ = make_unique<Liste<Concepteur>>(nConcepteurs);
 	}
+
 	Jeu(const Jeu& jeu) {
 		titre_ = jeu.getTitre();
 		anneeSortie_ = jeu.getAnneeSortie();
 		developpeur_ = jeu.getDeveloppeur();
+		for (auto i : iter::range(jeu.concepteurs_.get()->size())) {
+			concepteurs_.get()->ajoutListe(jeu.concepteurs_.get()->operator[](i));
+		}
 	}
-
+	
 
 	const std::string& getTitre() const { return titre_; }
 	void setTitre(const std::string& titre) { titre_ = titre; }
