@@ -52,7 +52,7 @@ shared_ptr<Concepteur> lireConcepteur(Liste<Jeu>& lj, istream& f)
 	if (ptrC == nullptr) {
 		ptrC = make_shared<Concepteur>(nom, anneeNaissance, pays);
 	}
-	cout << "C: " << nom << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
+	//cout << "C: " << nom << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
 	return ptrC;
 }
 
@@ -68,7 +68,7 @@ shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
 	for (unsigned int i = 0; i < nConcepteurs; i++)
 		ptrJeu->getConcepteurs()->ajoutListe( lireConcepteur(lj, f));
 
-	cout << "J: " << titre << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
+	//cout << "J: " << titre << endl;  //TODO: Enlever cet affichage temporaire servant à voir que le code fourni lit bien les jeux.
 	return ptrJeu;
 }
 

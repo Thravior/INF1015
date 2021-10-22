@@ -11,7 +11,7 @@ template <typename T>
 class Liste	
 {
 public:
-	//TODO: Constructeurs et surcharges d'opérateurs
+	//TODO: Constructeurs et surcharges d'opï¿½rateurs
 	Liste() {
 		nElements_ = 0;
 		capacite_ = 0;
@@ -29,32 +29,32 @@ public:
 	
 	void operator+ (shared_ptr<T> element) { ajoutListe(element); }
 
-	//TODO: Méthode pour ajouter un élément à la liste
+	//TODO: Mï¿½thode pour ajouter un ï¿½lï¿½ment ï¿½ la liste
 	void ajoutListe(shared_ptr<T>);
 
 
-	// Pour size, on utilise le même nom que les accesseurs de la bibliothèque standard, qui permet d'utiliser certaines fonctions de la bibliotheque sur cette classe.
+	// Pour size, on utilise le mï¿½me nom que les accesseurs de la bibliothï¿½que standard, qui permet d'utiliser certaines fonctions de la bibliotheque sur cette classe.
 	unsigned size() const         { return nElements_; }
 	unsigned getCapacite() const  { return capacite_; }
 
-	//TODO: Méthode pour changer la capacité de la liste
+	//TODO: Mï¿½thode pour changer la capacitï¿½ de la liste
 	void augmenterCapacite(); 
 
-	//TODO: Méthode pour trouver une élément selon un critère (lambda).
+	//TODO: Mï¿½thode pour trouver une ï¿½lï¿½ment selon un critï¿½re (lambda).
 	shared_ptr<T> trouverCritere(const function<bool(shared_ptr<T>)>& critere) {
 		for (auto&& i : iter::range(nElements_))
 		{
 			if (critere(elements_[i])) {
 				return elements_[i];
 			}	
-		}
+
 		return nullptr;
 	}
 	
 private:
 	unsigned int nElements_;
 	unsigned int capacite_;
-	//TODO: Attribut contenant les éléments de la liste.
+	//TODO: Attribut contenant les ï¿½lï¿½ments de la liste.
 	unique_ptr< shared_ptr<T>[] > elements_;
 
 };
