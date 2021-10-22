@@ -59,8 +59,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	std::string nom = "Yoshinori Kitase";
 	auto testNom = [&](shared_ptr<Concepteur> c) 
 		{return c->getNom() == nom; };
-	auto resultatJ0 = lj[0]->trouverConcepteur(testNom);
-	auto resultatJ1 = lj[1]->trouverConcepteur(testNom);
+	auto resultatJ0 = lj[0]->chercherConcepteur(testNom);
+	auto resultatJ1 = lj[1]->chercherConcepteur(testNom);
 
 	cout << "Recherche de concepteur du nom 'Yoshinori Kitase' dans le jeu 0: " 
 		<< resultatJ0 << "\t" << resultatJ0->getAnneeNaissance() << endl;
