@@ -24,6 +24,7 @@ public:
 		titre_ = jeu.getTitre();
 		anneeSortie_ = jeu.getAnneeSortie();
 		developpeur_ = jeu.getDeveloppeur();
+		concepteurs_ = make_unique<Liste<Concepteur>>(jeu.concepteurs_.get()->size());
 		for (auto i : iter::range(jeu.concepteurs_.get()->size())) {
 			concepteurs_.get()->ajoutListe(jeu.concepteurs_.get()->operator[](i));
 		}
@@ -43,7 +44,9 @@ public:
 	Liste<Concepteur>* getConcepteurs() { return concepteurs_.get(); }
 
 	//TODO: Votre méthode pour trouver un concepteur selon un critère donné par une lambda, en utilisant la méthode de Liste.
-
+	shared_ptr<Concepteur> chercherConcepteur(const function<bool(shared_ptr<Concepteur>)>& critere){
+		return concepteurs_->trouverCritere(critere);
+	}
 
 private:
 	std::string titre_;

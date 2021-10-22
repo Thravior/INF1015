@@ -58,6 +58,40 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 
 
 	cout << ligneSeparation << lj;
+
+	cout << ligneSeparation << endl;
+	
+	// Test de la copie (#7)
+
+	auto jeu0 = lj[0];
+	auto jeu1 = lj[1];
+	auto jeu2 = lj[2];
+	Jeu nouveauJeu = *jeu2;
+	cout << jeu2 << "\n" << &nouveauJeu << endl;
+
+	nouveauJeu.getConcepteurs()->operator[](1) = jeu0->getConcepteurs()->operator[](1);
+	//
+	cout << ligneSeparation << nouveauJeu.getConcepteurs()->operator[](1).get()->getNom() << endl;
+	
+	cout << "Jeu 2 : " << jeu2->getTitre() << endl;
+	cout << *jeu2->getConcepteurs() << endl;
+	cout << "Copie modifiee : " << nouveauJeu.getTitre() << endl;
+	cout << *nouveauJeu.getConcepteurs() << endl;
+	cout << "Adresse premier concepteur jeu2 : " << jeu2->getConcepteurs()->operator[](0) << " \t Adresse premier concepteur copie : " << nouveauJeu.getConcepteurs()->operator[](0) << endl;
+
+	//auto j = lj.trouverCritere(lj&,  [](unique_ptr<Jeu> e) {return e = jeu2->getTitre() });
+	char c = 'M';
+	auto a = lj.trouverCritere([&](shared_ptr<Jeu> e) {return  e->getTitre()[0] ==  c; });
+	cout << a->getTitre() << endl;
+
+	
+	//cout << a->getTitre();
+	auto b = jeu0->chercherConcepteur([&](shared_ptr<Concepteur> c) {return  c->getNom() == "Yoshinori Kitase"; });
+	//auto b = jeu0->chercherConcepteur("Yoshinori Kitase");
+	cout << "Adresse du concepteur Yoshinori Kitase dans le premier jeu :  " << b << " Annee de naissance : " << b->getAnneeNaissance() << endl;
+
+	auto e = jeu1->chercherConcepteur([&](shared_ptr<Concepteur> c) {return  c->getNom() == "Yoshinori Kitase"; });
+	cout << "Adresse du concepteur Yoshinori Kitase dans le premier jeu :  " << e << " Annee de naissance : " << e->getAnneeNaissance() << endl;
 	
 	// 
 	//TODO: S'assurer qu'aucune ligne de code est non couverte.
