@@ -41,9 +41,16 @@ public:
 	void augmenterCapacite(); 
 
 	//TODO: Méthode pour trouver une élément selon un critère (lambda).
+	shared_ptr<T> trouverChose(const function<bool(shared_ptr<T>)>& critere)
+	{
+		for (auto&& i : iter::range(nElements_)) {
+			if (critere(elements_[i])) {
+				return elements_[i];
+			}
+		}
+		return nullptr;
+	}
 	
-	//void trouverElement(Liste<T> liste, const function<void(T&)>& critere);
-
 private:
 	unsigned int nElements_;
 	unsigned int capacite_;
