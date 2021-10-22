@@ -30,7 +30,7 @@ public:
 		}
 	}
 	
-
+	
 	const std::string& getTitre() const { return titre_; }
 	void setTitre(const std::string& titre) { titre_ = titre; }
 
@@ -56,3 +56,4 @@ private:
 	unique_ptr<Liste<Concepteur>> concepteurs_;
 
 };
+
