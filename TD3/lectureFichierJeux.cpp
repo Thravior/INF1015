@@ -1,3 +1,10 @@
+/**
+* Programme qui permet la lecture du fichier binaire fournit.
+* \file   LectureFichierJeux.cpp
+* \author Laurie Bedard-Cote (2086165) et Mathias Gagnon (2115246)
+* \date  24 octobre 2021
+* \cree  6 octobre 2021
+*/
 // Fonctions pour lire le fichier binaire.
 #include "lectureFichierJeux.hpp"
 #include <fstream>
@@ -62,6 +69,7 @@ shared_ptr<Jeu> lireJeu(istream& f, Liste<Jeu>& lj)
 	unsigned anneeSortie  = lireUint16(f);
 	string developpeur    = lireString(f);
 	unsigned nConcepteurs = lireUint8(f);
+	
 	//TODO: Compléter la fonction (équivalent de lireJeu du TD2).
 	auto ptrJeu = make_shared<Jeu>(titre, anneeSortie, developpeur, nConcepteurs);
 

@@ -1,4 +1,13 @@
-﻿#include "bibliotheque_cours.hpp"
+﻿/**
+* Programme qui comprend la surcharge d'operateur << et qui comrepnd tous les
+* tests demandes dans l'enonce.
+* \file   main.cpp
+* \author Laurie Bedard-Cote (2086165) et Mathias Gagnon (2115246)
+* \date  24 octobre 2021
+* \cree  6 octobre 2021
+*/
+
+#include "bibliotheque_cours.hpp"
 #include "verification_allocation.hpp"
 #include "Liste.hpp"
 #include "Concepteur.hpp"
@@ -14,7 +23,8 @@ ostream& operator<< (ostream& os, const Liste<Concepteur>& lc)
 {
 	
 	for (auto i : iter::range(lc.size())) {
-		os << "\t" <<lc[i]->getNom() << ", " << lc[i]->getAnneeNaissance() << ", " << lc[i]->getPays() << endl;
+		os << "\t" <<lc[i]->getNom() << ", " << lc[i]->getAnneeNaissance() << ", " 
+			<< lc[i]->getPays() << endl;
 	}
 	return os;
 }
@@ -24,9 +34,8 @@ ostream& operator<< (ostream& os, const Liste<Jeu>& lj)
 	for (auto i : iter::range(lj.size())) {
 		os << lj[i]->getTitre() << endl << lj[i].get()->getAnneeSortie()  << endl
 		<< lj[i]->getDeveloppeur() << endl;
-		os << *lj[i]->getConcepteurs() << endl;
 		
-		
+		os << *lj[i]->getConcepteurs() << endl;	
 	}
 	return os;
 }
@@ -47,15 +56,22 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 
 	
 	//TODO: Les l'affichage et l'écriture dans le fichier devraient fonctionner.
-	//cout << ligneSeparation << lj;
+	cout << ligneSeparation << lj;
 	//ofstream("sortie.txt") << lj;
 
 	//TODO: Compléter le main avec les tests demandés.
-	cout << "Nb de jeux : " << lj.size() << endl; // Devrait avoir 17 jeux
-	cout << "Capacite : " << lj.getCapacite() << endl; // Devrait avoir une capacite de 32
-	cout << "Titre du jeu a l'indice 2 : " << lj[2]->getTitre() << endl; // Devrait avoir "Secret of Mana"
+	cout << ligneSeparation << endl;
+	// Devrait avoir 17 jeux
+	cout << "Nb de jeux : " << lj.size() << endl; 
+	// Devrait avoir une capacite de 32
+	cout << "Capacite : " << lj.getCapacite() << endl; 
+	
+	// Devrait avoir "Secret of Mana"
+	cout << "Titre du jeu a l'indice 2 : " << lj[2]->getTitre() << endl; 
+	// Devrait avoir "Hiromichi Tanaka"
 	cout << "Nom du deuxieme concepteur du jeu a l'indice 2 : " 
 		<< lj[2]->getConcepteurs()->operator[](1)->getNom() << endl; // Devrait avoir "Hiromichi Tanaka"
+	
 	std::string nom = "Yoshinori Kitase";
 	auto testNom = [&](shared_ptr<Concepteur> c) 
 		{return c->getNom() == nom; };
@@ -68,7 +84,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 		<< resultatJ1 << "\t" << resultatJ1->getAnneeNaissance() << endl;
 
 	
-	//cout << ligneSeparation << lj;
 	
 	// 
 	//TODO: S'assurer qu'aucune ligne de code est non couverte.

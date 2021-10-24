@@ -1,3 +1,11 @@
+/**
+* Programme qui comprend la classe Jeu et ses differentes methodes. On y 
+* retrouve aussi une fonction lambda.
+* \file   Jeu.hpp
+* \author Laurie Bedard-Cote (2086165) et Mathias Gagnon (2115246)
+* \date  24 octobre 2021
+* \cree  6 octobre 2021
+*/
 #pragma once
 #include "Liste.hpp"
 #include "Concepteur.hpp"
@@ -13,7 +21,8 @@ class Jeu
 public:
 	//TODO: un constructeur par défaut et un constructeur paramétré.
 	Jeu() = default;
-	Jeu(const string& titre, const int anneeSortie, const string& developpeur, int nConcepteurs) {
+	Jeu(const string& titre, const int anneeSortie, const string& developpeur,
+		int nConcepteurs) {
 		titre_ = titre;
 		anneeSortie_ = anneeSortie;
 		developpeur_ = developpeur;

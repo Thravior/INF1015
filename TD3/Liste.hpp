@@ -1,3 +1,13 @@
+/**
+* Programme qui comprend la classe Liste et ses methodes. Cette classe agira
+* differement selon le template choisi lors de son appel. On y retrouve aussi
+* une fonction lamda. 
+* \file   liste.hpp
+* \author Laurie Bedard-Cote (2086165) et Mathias Gagnon (2115246)
+* \date  24 octobre 2021
+* \cree  6 octobre 2021
+*/
+
 #pragma once
 #include <iostream>
 #include <memory>
@@ -11,7 +21,7 @@ template <typename T>
 class Liste	
 {
 public:
-	//TODO: Constructeurs et surcharges d'op�rateurs
+	//TODO: Constructeurs et surcharges d'operateurs
 	Liste() {
 		nElements_ = 0;
 		capacite_ = 0;
@@ -29,19 +39,21 @@ public:
 	
 	void operator+ (shared_ptr<T> element) { ajoutListe(element); }
 
-	//TODO: M�thode pour ajouter un �l�ment � la liste
+	//TODO: Methode pour ajouter un element e la liste
 	void ajoutListe(shared_ptr<T>);
 
 
-	// Pour size, on utilise le m�me nom que les accesseurs de la biblioth�que standard, qui permet d'utiliser certaines fonctions de la bibliotheque sur cette classe.
+	// Pour size, on utilise le meme nom que les accesseurs de la bibliotheque
+	// standard, qui permet d'utiliser certaines fonctions de la bibliotheque 
+	// sur cette classe.
 	unsigned size() const         { return nElements_; }
 	unsigned getCapacite() const  { return capacite_; }
 
-	//TODO: M�thode pour changer la capacit� de la liste
+	//TODO: Methode pour changer la capacite de la liste
 	void augmenterCapacite(); 
 
-	//TODO: M�thode pour trouver une �l�ment selon un crit�re (lambda).
-	shared_ptr<T> trouverCritere(const function<bool(shared_ptr<T>)>& critere) {
+	//TODO: Methode pour trouver une element selon un critere (lambda).
+	shared_ptr<T> trouverCritere(const function<bool(shared_ptr<T>)>& critere){
 		for (auto&& i : iter::range(nElements_))
 		{
 			if (critere(elements_[i])) {
@@ -54,7 +66,7 @@ public:
 private:
 	unsigned int nElements_;
 	unsigned int capacite_;
-	//TODO: Attribut contenant les �l�ments de la liste.
+	//TODO: Attribut contenant les elements de la liste.
 	unique_ptr< shared_ptr<T>[] > elements_;
 
 };
