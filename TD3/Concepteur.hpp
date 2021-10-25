@@ -6,10 +6,11 @@ class Concepteur
 public:
 	//TODO: Un constructeur par défaut et un constructeur paramétré.
 	Concepteur() = default;
-	Concepteur(const string& nom, unsigned anneNaissance, const string& pays) {
-		nom_ = nom;
+	Concepteur(const string& nom, unsigned anneNaissance, const string& pays) 
+	{
+		nom_			= nom;
 		anneeNaissance_ = anneNaissance;
-		pays_ = pays;
+		pays_			= pays;
 	}
 
 	const std::string& getNom() const     { return nom_; }
@@ -22,7 +23,7 @@ public:
 	void setPays(const std::string& pays) { pays_ = pays; }
 
 private:
-	std::string nom_;
-	unsigned anneeNaissance_;
+	std::string	nom_;
+	unsigned	anneeNaissance_;
 	std::string pays_;
 };

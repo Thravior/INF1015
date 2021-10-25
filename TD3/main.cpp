@@ -23,8 +23,8 @@ ostream& operator<< (ostream& os, const Liste<Concepteur>& lc)
 {
 	
 	for (auto i : iter::range(lc.size())) {
-		os << "\t" <<lc[i]->getNom() << ", " << lc[i]->getAnneeNaissance() << ", " 
-			<< lc[i]->getPays() << endl;
+		os << "\t" <<lc[i]->getNom() << ", " << lc[i]->getAnneeNaissance() 
+		   << ", " << lc[i]->getPays() << endl;
 	}
 	return os;
 }
@@ -32,11 +32,12 @@ ostream& operator<< (ostream& os, const Liste<Concepteur>& lc)
 ostream& operator<< (ostream& os, const Liste<Jeu>& lj)
 {
 	for (auto i : iter::range(lj.size())) {
-		os << lj[i]->getTitre() << endl << lj[i].get()->getAnneeSortie()  << endl
-		<< lj[i]->getDeveloppeur() << endl;
+		os << lj[i]->getTitre() << endl << lj[i].get()->getAnneeSortie()  
+		   << endl << lj[i]->getDeveloppeur() << endl;
 		
 		os << *lj[i]->getConcepteurs() << endl;	
 	}
+
 	return os;
 }
 
@@ -62,26 +63,28 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 	//TODO: Compléter le main avec les tests demandés.
 	cout << ligneSeparation << endl;
 	// Devrait avoir 17 jeux
-	cout << "Nb de jeux : " << lj.size() << endl; 
+	cout << "Nb de jeux : " << lj.size()		<< endl; 
 	// Devrait avoir une capacite de 32
-	cout << "Capacite : " << lj.getCapacite() << endl; 
+	cout << "Capacite : "   << lj.getCapacite() << endl; 
 	
 	// Devrait avoir "Secret of Mana"
 	cout << "Titre du jeu a l'indice 2 : " << lj[2]->getTitre() << endl; 
 	// Devrait avoir "Hiromichi Tanaka"
 	cout << "Nom du deuxieme concepteur du jeu a l'indice 2 : " 
-		<< lj[2]->getConcepteurs()->operator[](1)->getNom() << endl; // Devrait avoir "Hiromichi Tanaka"
+		 << lj[2]->getConcepteurs()->operator[](1)->getNom() << endl; 
 	
 	std::string nom = "Yoshinori Kitase";
-	auto testNom = [&](shared_ptr<Concepteur> c) 
-		{return c->getNom() == nom; };
-	auto resultatJ0 = lj[0]->chercherConcepteur(testNom);
-	auto resultatJ1 = lj[1]->chercherConcepteur(testNom);
+	auto testNom	= [&](shared_ptr<Concepteur> c) {return c->getNom() == nom; };
+
+	shared_ptr<Concepteur> resultatJ0 = lj[0]->chercherConcepteur(testNom);
+	shared_ptr<Concepteur> resultatJ1 = lj[1]->chercherConcepteur(testNom);
 
 	cout << "Recherche de concepteur du nom 'Yoshinori Kitase' dans le jeu 0: " 
-		<< resultatJ0 << "\t" << resultatJ0->getAnneeNaissance() << endl;
+		 << resultatJ0  << "  Annee de naissance : " 
+		 << resultatJ0->getAnneeNaissance() << endl;
 	cout << "Recherche de concepteur du nom 'Yoshinori Kitase' dans le jeu 1: " 
-		<< resultatJ1 << "\t" << resultatJ1->getAnneeNaissance() << endl;
+		 << resultatJ1 << "  Annee de naissance : " 
+		 <<  resultatJ1->getAnneeNaissance() << endl;
 
 	
 	

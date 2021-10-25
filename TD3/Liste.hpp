@@ -22,19 +22,21 @@ class Liste
 {
 public:
 	//TODO: Constructeurs et surcharges d'operateurs
-	Liste() {
-		nElements_ = 0;
-		capacite_ = 0;
-		elements_ = nullptr;
+	Liste()
+	{
+		nElements_	= 0;
+		capacite_	= 0;
+		elements_	= nullptr;
 	}
 
-	Liste(int taille) {
-		nElements_ = 0;
-		capacite_ = taille;
-		elements_ = make_unique<shared_ptr<T>[]>(capacite_);
+	Liste(int taille)
+	{
+		nElements_	= 0;
+		capacite_	= taille;
+		elements_	= make_unique<shared_ptr<T>[]>(capacite_);
 	}
 
-	shared_ptr<T>& operator[] (int index) { return elements_[index]; }
+	shared_ptr<T>&		 operator[] (int index)			  { return elements_[index]; }
 	const shared_ptr<T>& operator[] (int index) const { return elements_[index]; }
 	
 	void operator+ (shared_ptr<T> element) { ajoutListe(element); }
@@ -46,16 +48,15 @@ public:
 	// Pour size, on utilise le meme nom que les accesseurs de la bibliotheque
 	// standard, qui permet d'utiliser certaines fonctions de la bibliotheque 
 	// sur cette classe.
-	unsigned size() const         { return nElements_; }
+	unsigned size()		   const  { return nElements_; }
 	unsigned getCapacite() const  { return capacite_; }
 
 	//TODO: Methode pour changer la capacite de la liste
-	void augmenterCapacite(); 
+	void	augmenterCapacite(); 
 
 	//TODO: Methode pour trouver une element selon un critere (lambda).
 	shared_ptr<T> trouverCritere(const function<bool(shared_ptr<T>)>& critere){
-		for (auto&& i : iter::range(nElements_))
-		{
+		for (auto&& i : iter::range(nElements_)) {
 			if (critere(elements_[i])) {
 				return elements_[i];
 			}
@@ -77,6 +78,7 @@ void Liste<T>::ajoutListe(shared_ptr<T> ptr)
 	if (nElements_ == capacite_) {
 		augmenterCapacite();
 	}
+
 	elements_[nElements_] = move(ptr);
 	++nElements_;
 }
@@ -86,10 +88,11 @@ void Liste<T>::augmenterCapacite()
 {
 	capacite_ = max(capacite_ * 2, unsigned(1));
 	
-	auto ptr = make_unique<shared_ptr<T>[]>(capacite_);
+	auto ptr  = make_unique<shared_ptr<T>[]>(capacite_);
 
 	for (auto i : iter::range(nElements_) ) {
 		ptr[i] = move(elements_[i]);
 	}
+
 	elements_ = move(ptr);
 }
