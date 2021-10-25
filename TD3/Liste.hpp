@@ -37,7 +37,7 @@ public:
 	}
 
 	shared_ptr<T>&		 operator[] (int index)			  { return elements_[index]; }
-	const shared_ptr<T>& operator[] (int index) const { return elements_[index]; }
+	const shared_ptr<T>& operator[] (int index) const     { return elements_[index]; }
 	
 	void operator+ (shared_ptr<T> element) { ajoutListe(element); }
 

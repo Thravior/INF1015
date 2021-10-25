@@ -47,7 +47,7 @@ public:
 	void	 setTitre(const std::string& titre) { titre_ = titre; }
 
 	unsigned getAnneeSortie() const				{ return anneeSortie_; }
-	void	 setAnneeSortie(unsigned annee) { anneeSortie_ = annee; }
+	void	 setAnneeSortie(unsigned annee)     { anneeSortie_ = annee; }
 
 	const std::string& getDeveloppeur() const	{ return developpeur_; }
 	void	 setDeveloppeur(const std::string& developpeur) { developpeur_ = developpeur; }
